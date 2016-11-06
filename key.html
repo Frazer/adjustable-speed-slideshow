@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <script src="jquery-3.0.0.min.js"></script>
+<script src="events.js"></script>
+</head>
+<body>
+ 
+    <input id="target" type="text">
+
+<button id="other"> Trigger the handler </button>
+ 
+<script>
+var xTriggered = 0;
+$( "#target" ).keypress(function( event ) {
+  if ( event.which == 13 ) {
+     event.preventDefault();
+  }
+  xTriggered++;
+  var msg = "Handler for .keypress() called " + xTriggered + " time(s).";
+  $.print( msg, "html" );
+  $.print( event );
+});
+ 
+$( "#other" ).click(function() {
+  $( "#target" ).keypress();
+});
+</script>
+ 
+</body>
+</html>
